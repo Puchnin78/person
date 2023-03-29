@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+class Person {
+    public:
+    int id, parent_id, age;
+    string surname, name, birth, job, job_log;
+    Person(int id, string surname, string name, string job, string birth, int parent_id, int age) {
+        this->id = id;
+        this->surname = surname;
+        this->name = name;
+        this->job = job;
+        this->birth = birth;
+        this->parent_id = parent_id;
+        this->age = age;
+    }
+    int give_born() {
+        return this->id;
+        
+    }
+    int new_job()
+    this job = new_job
+    
+    save_to_file
+};
+
+int main() {
+    Person *obj1 = new Person(1, "aaaa", "bbb", "qqqq", "1.1.1", 0, 18);
+    Person *obj2 = new Person(2, "aaaa1", "bbb1", "qqqq1", "1.1.11", obj1->give_born(), 18);
+    cout << obj1->surname << endl;
+    cout << obj2->parent_id;
+    return 0;
+}
