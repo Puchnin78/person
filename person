@@ -1,33 +1,110 @@
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <locale>
 
 using namespace std;
+
+
+
 class Person {
-    public:
-    int id, parent_id, age;
-    string surname, name, birth, job, job_log;
+public:
+int id, parent_id, age;
+string surname, name, birth, job, new_job;
     Person(int id, string surname, string name, string job, string birth, int parent_id, int age) {
         this->id = id;
-        this->surname = surname;
-        this->name = name;
-        this->job = job;
-        this->birth = birth;
-        this->parent_id = parent_id;
-        this->age = age;
-    }
-    int give_born() {
-        return this->id;
-        
-    }
-    int new_job()
-    this job = new_job
-    
-    save_to_file
+    this->parent_id = parent_id;
+    this->age = age;
+    this->surname = surname;
+    this->name = name;
+    this->birth = birth;
+    this->job = job;
+    this->new_job = new_job;
+}
+
+int give_born() {
+return this->id;
+}
 };
 
 int main() {
-    Person *obj1 = new Person(1, "aaaa", "bbb", "qqqq", "1.1.1", 0, 18);
-    Person *obj2 = new Person(2, "aaaa1", "bbb1", "qqqq1", "1.1.11", obj1->give_born(), 18);
-    cout << obj1->surname << endl;
-    cout << obj2->parent_id;
-    return 0;
+setlocale(LC_ALL, "rus");
+Person* obj1 = new Person(1, "Puchnin", "Alexey", "teha", "17.17.17", 0, 18);
+Person* obj2 = new Person(2, "Puchnin1", "Alexey1", "teha1", "15.15.15", obj1->give_born(), 18);
+
+ofstream file;
+file.open("PA.txt");
+file « "id: " « obj1->id « "\n"
+        « "parent_id: " « obj1->parent_id « "\n"
+        « "age: " « obj1->age « "\n"
+        « "surname: " « obj1->surname « "\n"
+        « "name: " « obj1->name « "\n"
+        « "birth: " « obj1->birth « "\n"
+        « "job: " « obj1->job « "\n\n";
+file « "id: " « obj2->id « "\n"
+        « "parent_id: " « obj2->parent_id « "\n"
+        « "age: " « obj2->age « "\n"
+        « "surname: " « obj2->surname « "\n"
+        « "name: " « obj2->name « "\n"
+        « "birth: " « obj2->birth « "\n"
+        « "job: " « obj2->job « "\n";
+file.close();
+
+char c;
+cout « "Для завершения программы нажмите q, для вывода данных в консольное окно нажмите w, для создания нового файла и изменения работы пользователя нажмите r:" « endl;
+    cin » c;
+if (c == 'q') {
+return 0;
 }
+    else if (c == 'w') {
+        string line;
+        ifstream file("PA.txt");
+        if (file.is_open()) {
+        while (getline(file, line)) {
+cout « line « endl;
+}
+file.close();
+}
+else
+cout « "Файл не удалось открыть :(";
+}
+else if (c == 'r') {
+string filename = "PA.txt";
+remove(filename.c_str()) != 0;
+ofstream new_file;
+new_file.open("PA.txt");
+    int id;
+    cout « "Введите id пользователя, работу которого хотите изменить: ";
+        cin » id;
+string new_job;
+    cout « "Введите новое значение job: ";
+        cin » new_job;
+new_file « "id: " « obj1->id « "\n"
+        « "parent_id: " « obj1->parent_id « "\n"
+        « "age: " « obj1->age « "\n"
+        « "surname: " « obj1->surname « "\n"
+        « "name: " « obj1->name « "\n"
+        « "birth: " « obj1->birth « "\n";
+if (id == obj1->id) {
+new_file « "new_job: " « new_job « "\n\n";
+}
+else {
+new_file « "job: " « obj1->job « "\n\n";
+}
+new_file « "id: " « obj2->id « "\n"
+        « "parent_id: " « obj2->parent_id « "\n"
+        « "age: " « obj2->age « "\n"
+        « "surname: " « obj2->surname « "\n"
+        « "name: " « obj2->name « "\n"
+        « "birth: " « obj2->birth « "\n";
+if (id == obj2->id) {
+new_file « "new_job: " « new_job « "\n";
+}
+else {
+new_file « "job: " « obj2->job « "\n";
+}
+new_file.close();
+}
+return 0;
+}
+
