@@ -12,7 +12,7 @@ public:
 int id, parent_id, age;
 string surname, name, birth, job, new_job;
     Person(int id, string surname, string name, string job, string birth, int parent_id, int age) {
-        this->id = id;
+    this->id = id;
     this->parent_id = parent_id;
     this->age = age;
     this->surname = surname;
